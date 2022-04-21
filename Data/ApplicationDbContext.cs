@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using HotelReservation.Models;
+using HotelReservationSystem.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelReservationSystem.Data
@@ -9,5 +11,7 @@ namespace HotelReservationSystem.Data
             : base(options)
         {
         }
+        public DbSet<Reservation> Reservation { get; set; }
+        public DbSet<ReservationViewModel> ReservationViewModel { get; set; }
     }
 }
