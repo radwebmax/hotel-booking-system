@@ -1,0 +1,132 @@
+﻿@model HotelReservationSystem.Models.ReservationViewModel
+@{
+    ViewData["Title"] = "Make a booking";
+}
+
+      	<section class="booking-agile">
+		<h1>Hotel Booking Form</h1>
+		<div class="headbooking-agile">
+			<div class="bookingleft-agile">
+				<h2>make a reservation</h2>
+
+				@using (Html.BeginForm("Create", "Reservation", FormMethod.Post))
+				{
+					@Html.AntiForgeryToken();
+										<div class="arrival-agile">
+						<p>check-in date</p>
+						<input placeholder="Check in" class="date" id="datepicker" type="text" value=""
+							onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="" name='ArrivalDateTime'/>
+					</div>
+					<div class="departure-agile">
+						<p>check-out date</p>
+						<input placeholder="Check out" class="date" id="datepicker1" type="text" value=""
+							onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="" name='DepartureDateTime'/>
+					</div>
+					<div class="clear"></div>
+					<div class="guest-agile">
+						<p>guest</p>
+						@Html.DropDownListFor(m=>m.GuestsNumber, new SelectList(ViewBag.GuestsNumber, "Value","Text"), new { @class = "form-control"})
+						<!--<select class='form-control'>
+							<option value="1 Person">1 Person</option>
+							<option value="2 Persons" selected>2 Persons</option>
+							<option value="3 Persons">3 Persons</option>
+							<option value="4 Persons">4 Persons</option>
+							<option value="5 Persons">5 Persons</option>
+						</select>
+						-->
+					</div>
+					<div class="room-agile">
+						<p>room</p>
+						@Html.DropDownListFor(m=>m.Room, new SelectList(ViewBag.Room, "Value","Text"), new { @class = "form-control"})
+						<!--<select>
+							<option value="room">room</option>
+							<option value="single">single</option>
+							<option value="double">double</option>
+							<option value="suite">suite</option>
+						</select>
+						-->
+					</div>
+					<div class="clear"></div>
+					<div class="room-agile">
+						<p>room preference</p>
+						@Html.DropDownListFor(m=>m.RoomPreference, new SelectList(ViewBag.RoomPreference, "Value","Text"), new { @class = "form-control"})
+						<!--<select>
+							<option value="tv">tv</option>
+							<option value="wi-fi">wi-fi</option>
+							<option value="a/c">a/c</option>
+							<option value="extra">extra</option>
+						</select>
+						-->
+					</div>
+					<div class="room-agile">
+						<p>№ of children</p>
+						@Html.DropDownListFor(m=>m.ChildrenNumber, new SelectList(ViewBag.ChildrenNumber, "Value","Text"), new { @class = "form-control"})
+						<!--<select>
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+						-->
+					</div>
+					<div class="clear"></div>
+					<div class="name-agile">
+						<p>Full name</p>
+						<input type="text" name="Name" placeholder="first name">
+					</div>
+
+					<div class="name-agile">
+						<p>Email</p>
+						<input type="text" name="Email" placeholder="email">
+					</div>
+					<div class="clear"></div>
+					<div class="submit-agile">
+						<input type="submit" value="Make reservation" id='submitBooking'>
+					</div>
+					<div class="clear"></div>
+				}
+				
+			</div>
+			<div class="bookingright-agile">
+				<h3>get in touch</h3>
+				<div class="mobile-agile">
+					<div class="icon-agile">
+						<span><i class="fa fa-phone" aria-hidden="true"></i></span>
+					</div>
+					<div class="contact-agile">
+						<p>phone</p>
+						<span>+1800-987456321</span>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="email-agile">
+					<div class="mail-agile">
+						<span><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+					</div>
+					<div class="address-agile">
+						<p>email</p>
+						<span><a href="mailto:support@example.com">support@example.com</a></span>
+					</div>
+					<div class="clear"></div>
+					<div class="offers-agile">
+						<h4>city break</h4>
+						<ul class="offers">
+							<li><a href="#">hotel: las vegas,classic room,1 single bed</a></li>
+							<li><a href="#">checkin: sunday 12 june 2016 from 15:00</a></li>
+							<li><a href="#">checkout: monday 13 june 2016 from 12:00</a></li>
+						</ul>
+						<span> 1500 / 2days</span>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+	 </section>
+		<!--start-date-piker-->
+		<script>
+			$(function () {
+				$("#datepicker,#datepicker1").datepicker();
+			});
+		</script>
+		<!-- /End-date-piker -->
